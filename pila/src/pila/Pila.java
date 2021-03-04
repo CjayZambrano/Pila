@@ -35,11 +35,11 @@ public class Pila<T extends Base> {
      }
      
      public String toString(){
-         StringBuilder sb = new StringBuilder("[");
+         StringBuilder sb = new StringBuilder();
          for (T e : elements){
              sb.append("\n").append(e.toString());
          }
-         sb.append("\n"+ "]");
+         sb.append("\n");
          
          return sb.toString();
      }     
