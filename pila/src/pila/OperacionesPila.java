@@ -74,4 +74,24 @@ public class OperacionesPila {
 
         return pilaUltimo;
     }
+    
+    public static <T extends Base> Pila<T> obtenerNumRepetido(Pila<T> pilaOriginal)
+    {
+        Pila<T> pilaNumRepetido = new Pila<>();
+        Pila<T> pilaDuplicada = duplicar(pilaOriginal);
+        
+        pilaNumRepetido.apilar(pilaDuplicada.desapilar());
+        
+        return pilaNumRepetido;
+    }
+    
+        public static <T extends Base> Pila<T> obtenerParR(Pila<T> pilaOriginal)
+    {
+        Pila<T> pilaParR = new Pila<>();
+        Pila<T> pilaDuplicada = duplicar(pilaOriginal);
+        
+        pilaParR.apilar(pilaDuplicada.desapilar());
+        
+        return pilaParR;
+    }
 }

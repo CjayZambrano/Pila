@@ -52,7 +52,7 @@ public class Lanzamiento extends Base {
 
     @Override
     public String toString() {
-        return "Su lanzamiento es: " + "Dado1=" + numDado1 + ", Dado2=" + numDado2;
+        return "Su lanzamiento es: " + "Dado#1=" + numDado1 + ", Dado#2=" + numDado2;
     }
     
     
