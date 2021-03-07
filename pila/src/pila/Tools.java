@@ -33,12 +33,12 @@ public class Tools
         if (!q.estaVacia())
         {
             sb.append("<table align=\"center\" border=\"2\">");
-            sb.append("<tr>").append("<th>").append("Texto").append("</th>").append("</tr>");
+            sb.append("<tr>").append("<th>").append("Lanzamiento").append("</th>").append("</tr>");
             do
             {
                 Lanzamiento e = q.desapilar();
                 sb.append("<tr>").append("<td>");
-                //sb.append(e.getTexto());
+                sb.append(e.toString());
                 sb.append("</td>").append("</tr>");
             }
             while (!q.estaVacia());

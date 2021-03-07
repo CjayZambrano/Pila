@@ -6,15 +6,13 @@
 package pila;
 
 /**
-         *
-         * @author david_orlando.mena@uao.edu.co David Orlando Mena 2180448
-         * @author frank_dan.castillo@uao.edu.co Frank Daniel Castillo 2171721
-         * @author cjay.zambrano@uao.edu.co Cjay Zambrano Liñan 2151536
-         * @author maria_camila.reina@uao.edu.co Maria Camila Reina 2190037
-         * @date Feb 2021
-         */
-
-
+ *
+ * @author david_orlando.mena@uao.edu.co David Orlando Mena 2180448
+ * @author frank_dan.castillo@uao.edu.co Frank Daniel Castillo 2171721
+ * @author cjay.zambrano@uao.edu.co Cjay Zambrano Liñan 2151536
+ * @author maria_camila.reina@uao.edu.co Maria Camila Reina 2190037
+ * @date Feb 2021
+ */
 public class OperacionesPila {
 
     public static <T extends Base> Pila<T> duplicar(Pila<T> pilaOriginal) {
@@ -74,24 +72,57 @@ public class OperacionesPila {
 
         return pilaUltimo;
     }
-    
-    public static <T extends Base> Pila<T> obtenerNumRepetido(Pila<T> pilaOriginal)
-    {
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Base> Pila<T> obtenerNumRepetido(Pila<T> pilaOriginal, int valorRepetido) {
         Pila<T> pilaNumRepetido = new Pila<>();
         Pila<T> pilaDuplicada = duplicar(pilaOriginal);
-        
-        pilaNumRepetido.apilar(pilaDuplicada.desapilar());
-        
+
+        int repetidoDado1 = 0;
+        int repetidoDado2 = 0;
+
+        while (!pilaDuplicada.estaVacia()) {
+            T elemento1 = pilaDuplicada.desapilar();
+            Lanzamiento elemento = (Lanzamiento) elemento1;
+            int valor1 = elemento.getNumDado1();
+            int valor2 = elemento.getNumDado2();
+
+            if (valor1 == valorRepetido) {
+                repetidoDado1++;
+            }
+
+            if (valor2 == valorRepetido) {
+                repetidoDado2++;
+            }
+        }
+        Lanzamiento elemento3 = new Lanzamiento(repetidoDado1, repetidoDado2);
+
+        pilaNumRepetido.apilar((T) elemento3);
+
         return pilaNumRepetido;
     }
-    
-        public static <T extends Base> Pila<T> obtenerParR(Pila<T> pilaOriginal)
-    {
-        Pila<T> pilaParR = new Pila<>();
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Base> Pila<T> obtenerPar(Pila<T> pilaOriginal, int valorp1, int valorp2) {
+        Pila<T> pilaPar = new Pila<>();
         Pila<T> pilaDuplicada = duplicar(pilaOriginal);
-        
-        pilaParR.apilar(pilaDuplicada.desapilar());
-        
-        return pilaParR;
+        int cont=0;
+        int valorppp=0;
+                
+        while (!pilaDuplicada.estaVacia()) {
+            T elemento1 = pilaDuplicada.desapilar();
+            Lanzamiento elemento = (Lanzamiento) elemento1;
+            int valor1 = elemento.getNumDado1();
+            int valor2 = elemento.getNumDado2();
+
+            if (valor1 == valorp1 && valor2 == valorp2) {
+                cont++;
+            }
+            
+            Lanzamiento nPar= new Lanzamiento(cont, 0);
+            pilaPar.apilar((T) nPar);
+        }
+
+        return pilaPar;
     }
 }
